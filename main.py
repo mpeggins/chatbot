@@ -15,8 +15,10 @@ client = genai.Client(api_key=api_key)
 # for model in client.models.list():
 #     print(model.name)
 
+prompt = "Explain AI to me like I'm a kid."
+
 response = client.models.generate_content(
-    model="gemini-2.0-flash-lite",
-    contents="Explain AI to me like I'm a kid.")
+    model = "gemini-2.0-flash-lite",
+    contents = prompt)
 
 print(response.text)
