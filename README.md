@@ -1,48 +1,45 @@
 This project demonstrates how to build a simple chatbot using a Gemini API.
 
-Before starting this project, you must generate an API key from Google's Gemini.
+## Updates:
 
-## I. API Integration
+This is version 2 of the project.
 
-Before running your chatbot, you must integrate your API key. 
+In this version, we implement a simple iterative chat feature. As opposed to sending a manual prompt each time, we are now able to have a back and forth conversation with the model. 
 
-There are two ways to do this:
+###  Configurations:
 
-### 1. Locally (easier, less secure)
+In this version, we implemented new chat configurations. **These are not strictly necessary, but it does allow you more control over the system's responses.** Here are the configurations explained:
 
-If running locally on your server, you can simply have the following line in your main.py file:
+#### Temperature:
+    temperature=0.5
 
-    api_key = "...your api key goes here..."
+The valid range for Temperature is from 0.0 to 2.0. 
 
-### 2. Securely in a .env folder
+Temperature controls the degree of randomness in token selection. Higher temperatures result in a higher number of potential tokens and can produce more creative results, while lower temperatures have the opposite effect, such that a temperature of 0 results in greedy decoding, selecting the most probable token at each step.
 
-If you would like to run this on a server, be sure to guard your API key and use a .env file.
+Temperature doesn't provide any guarantees of randomness, but it can be used to "nudge" the output.
 
-Here are the steps:
+#### Maximum number of tokens:
+    max_output_tokens=300
 
-#### a. Create a .env file and place the following code:
+This can be any number you decide. Importantly, this is a hard stop. It does not mean the model will generate a response less than the specified characters. It means that it will stop generating its response once it reaches this number.
 
-    GEMINI_API_KEY = "...your api key goes here..."
+#### Top P:
+    top_p=0.95
 
-#### b. In your main.py file, use the following code:
+Top P works by selecting from the most probable tokens whose cumulative probability adds up to the `top_p` value. For example, a `top_p` of `0.95` means the model will only consider tokens from the most likely 95% of the probability distribution.
 
-    import os
-    from dotenv import load_dotenv
+#### Top K:
+    top_k=40
 
-    load_dotenv()
-    api_key = os.getenv("GEMINI_API_KEY")
+Top K works by selecting from the `top_k` most likely tokens. For example, a `top_k` of `40` means the model will only consider the 40 most probable next tokens, regardless of their cumulative probability.
 
-#### c. Run the following command in your Terminal:
+When using both `Top P` and `Top K`, the model will apply whichever filter results in a smaller, more restrictive set of tokens.
 
-    pip install python-dotenv
+**NOTE:** In practice, developers typically decide to use *either* Top P *or* Top K, not both. This project serves to demonstrate possibilities.
 
-## II. Choosing a Model
+## Limitations:
 
-For this project, I am using the gemini-2.0-flash-lite model. It is lightweight and cost-efficient. However, it is an older model. If you would like to explore other models, use the following code after you initialize the API key to explore other models:
+This version strictly uses Gemini's knowledge base. It does not work with any proprietary data, i.e. there are no RAG features.
 
-    for model in client.models.list():
-    print(model.name)
-
-## III. Updating the Prompt
-
-Using this method of a chatbot requires you to send a manual prompt. This is currently the most important tool at your disposal. To update it, simply change what's in the quotes after *prompt =*
+In the following version of this project, we will implement actual RAG features to chat with your own data.

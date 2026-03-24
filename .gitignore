@@ -1,0 +1,5 @@
+# Environments and Secrets
+.env
+.venv/
+.idea/
+__pycache__/
