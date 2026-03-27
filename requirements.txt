@@ -1,2 +1,4 @@
 google-genai
 python-dotenv
+chromadb
+google-api-core

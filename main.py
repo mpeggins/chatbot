@@ -1,17 +1,7 @@
 # imports for Gemini
-from google import genai
 from google.genai import types      # Allows model configuration
 
-# imports for API
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = os.getenv('GEMINI_API_KEY')
-#api_key = "...your API key here..."
-
-# Initialize the client (i.e. Gemini)
-client = genai.Client(api_key=api_key)
+from shared import client
 
 # Define System Instructions for LLM
 # This is important to modify this to your need.
