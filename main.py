@@ -1,5 +1,5 @@
 from google.genai import types
-import chromadb
+# import chromadb
 from shared import client, DB_NAME, GeminiEmbeddingFunction
 from ingest import chroma_client # Use only for temporary local runs
 
@@ -39,21 +39,6 @@ while True:
     if user_query.strip().lower() == 'quit':      # Allows the user to quit the chat by typing "quit"
         break
     search_query = user_query
-
-    # # Append user_query to chat_history
-    # chat_history.append({"role": "user", "parts": [{"text": user_query}]})
-    #
-    # bot_response = client.models.generate_content(
-    #     model = "gemini-2.5-flash-lite",
-    #     config = rag_config,
-    #     contents = chat_history
-    # )
-    #
-    # print(chat_history)
-    # print(f"Assistant: {bot_response.text}")
-    #
-    # # Append bot_response to chat_history
-    # chat_history.append({"role": "model", "parts": [{"text": bot_response.text}]})
 
     # --- 1: Query Rewriting ---
     # Query rewriting helps transform the user's query to a more appropriate vector search.
