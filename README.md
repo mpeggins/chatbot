@@ -50,7 +50,29 @@ A user's query might not always be phrased appropriately in order to make a math
 
 As a solution, before comparing the query embedding to the vector database, we first send the user's query to an LLM for a rewrite that will maximize the best retrieval possibilities.
 
-
-### How to Run
-
-python main.py
+ ### Retrieval (Search)
+ 
+ Once the query is rewritten and embedded, the system searches the ChromaDB vector database. It compares the numbers and pulls out the documents that are mathematically closest to the search query. 
+ 
+ ### Augmented Generation
+ 
+ Finally, we take the original text from those retrieved documents and "augment" (combine) it with the user's original query. We send this combined prompt to the LLM. By forcing the LLM to look at our retrieved context, it can confidently answer questions about our custom data without hallucinating!
+ 
+ ## How to Run
+ 
+ 1. **Install Dependencies**  
+    Make sure you have all the required Python packages installed. Run the following command in your terminal:
+    ```sh
+    pip install -r requirements.txt
+    ```
+ 
+ 2. **Set up your API Key**  
+    Create a new file named `.env` in the root directory of the project. Add your Gemini API key to this file like so:
+    ```env
+    GEMINI_API_KEY="your_actual_api_key_here"
+    ```
+ 
+ 3. **Start the Chatbot**  
+    Run the main script to start chatting. (Note: Because we are using an in-memory database for this version, running this script will automatically ingest the documents into RAM for you).
+    ```sh
+    python main.py
