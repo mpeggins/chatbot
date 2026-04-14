@@ -23,7 +23,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 raw_text = "\n".join(documents)
 chunks = text_splitter.split_text(raw_text)
 
-# Let's print out the results to make sure it worked!
+# Optional: Print out the results to make sure it worked.
 # print(f"Total chunks created: {len(chunks)}\n")
 
 # --- Define the Vector Database where document embeddings will live. ---
