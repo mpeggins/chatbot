@@ -1,0 +1,45 @@
+1. The AI Pivot & Current Trajectory
+After nine years in hospitality management, Micheal experienced an "AI moment" in 2023. Realizing the potential of custom data and conversational interfaces, he made a deliberate career pivot to become a self-taught AI Engineer.
+
+In June 2024, Micheal launched "The AI Pivot," working as an AI Trainer and content creator. He focuses on teaching generative AI, mastering local models, and building practical Retrieval-Augmented Generation (RAG) applications.
+
+To fully dedicate himself to learning AI engineering and software development, Micheal intentionally stepped back from management. He currently works as a waiter at La Vara, which provides the mental bandwidth needed for his technical studies.
+
+2. Technical Skills & Education
+Micheal bypassed a traditional college degree in favor of self-directed learning. He possesses strong programming proficiency in Python, Machine Learning, Applied AI, and managing vector databases for AI applications.
+
+In early 2026, Micheal completed Andrew Ng's renowned Machine Learning Specialization through Stanford Online. This rigorous certification included deep dives into Advanced Learning Algorithms and building foundational ML models.
+
+Micheal's core technical stack focuses on developing RAG architectures and web APIs using FastAPI. He develops his code locally using Jupyter notebooks and PyCharm, and actively versions and deploys his projects using Git and GitHub.
+
+3. Technical Projects & Course Creation
+In June 2025, Micheal developed a custom inventory application. He utilized an OCR API to successfully scan restaurant invoices and upload the structured data directly into a database, solving a real-world operational problem.
+
+In March 2026, Micheal built a fully functional RAG-based chatbot for a local Brooklyn gym. The AI system automated responses to membership and class inquiries by retrieving specific context from the gym's database.
+
+Micheal's portfolio includes a Mall Customer Segmentation project using unsupervised learning. He manually implemented a K-Means Clustering algorithm without relying on standard libraries to demonstrate his mathematical understanding of the model.
+
+Combining his technical knowledge with his passion for education, Micheal designed and launched an "Intro to AI" course on Udemy. The curriculum focuses on generative AI and large language models, quickly attracting over 100 enrolled learners.
+
+4. Hospitality Operations Management
+Before his transition into tech, Micheal built a highly successful nine-year career in restaurant and hospitality operations, excelling in P&L management, revenue generation, and creating operational efficiency.
+
+From September 2020 to October 2024, Micheal served as Assistant General Manager at The River Café in Brooklyn. He oversaw $10 million in annual revenue and managed a comprehensive team of 70 front-of-house employees.
+
+From February 2018 to March 2020, Micheal was the Operations Manager at Rossopomodoro. During his tenure, he notably reduced overall labor costs from 45% to 33% and successfully drove year-over-year revenue growth.
+
+From December 2015 to February 2018, Micheal served as the Hospitality Operations Manager at the Paramount Hotel in Times Square. He oversaw restaurant, in-room dining, and event operations within a highly active union property.
+
+5. Leadership & Communication
+Micheal refined his communication and leadership abilities by volunteering with Toastmasters International from January 2012 to December 2015, actively serving as Club President, VP of Education, and VP of Membership.
+
+Dedicated to public speaking, Micheal led programs designed to help speakers develop keynote presentations. He competed in numerous speech contests and officially earned the Advanced Communicator and Advanced Leader certifications.
+
+6. Personal Life & Interests
+Outside of his professional pursuits, Micheal is a dedicated family man who lives in Brooklyn, New York, with his wife and two sons. He values work-life balance and spending quality time with his family.
+
+Micheal is highly active and passionate about fitness. He regularly participates in high-intensity interval training (HIIT) and uses wearable technology to actively track his strain, sleep, and physical recovery.
+
+Micheal has a strong appreciation for the outdoors. When he is not coding or studying, he enjoys spending his time rock climbing, camping, and going on long hikes through nature.
+
+Drawing from his extensive hospitality background, Micheal holds an introductory sommelier certificate. This credential gives him a specialized, technical knowledge of European vinification and wine tasting profiles.

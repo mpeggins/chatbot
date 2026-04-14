@@ -2,16 +2,21 @@ from google.genai import types
 # import chromadb
 from shared import client, DB_NAME, GeminiEmbeddingFunction
 from ingest import chroma_client # Use only for temporary local runs
+import os
 
 # Define System Instructions for LLM
 # This is important to modify this to your need.
-system_instruction = """
-You are a helpful assistant. Your name is Todd.
-"""
+def load_system_prompt():
+    base_dir = os.path.dirname(__file__)
+    prompt_path = os.path.join("data", "system_prompt.txt")
+    with open(prompt_path, "r", encoding="utf-8") as f:
+        return f.read()
+
+system_instruction = load_system_prompt()
 
 # Create specific configuration for the chat
 rag_config = types.GenerateContentConfig(
-    temperature=1.0,          # Controls creativity
+    temperature=0.6,          # Controls creativity
     max_output_tokens=1000,    # Hard stop limit
     system_instruction = system_instruction     # Added System Instruction
 )

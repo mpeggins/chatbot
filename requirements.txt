@@ -3,3 +3,11 @@ python-dotenv
 chromadb
 google-api-core
 langchain-text-splitters
+langchain
+langchain-core
+langchain-community
+pandas
+pypdf
+docx2txt
+beautifulsoup4
+openpyxl
