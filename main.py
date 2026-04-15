@@ -9,7 +9,7 @@ from app_config import CHAT_MODEL
 # SYSTEM PROMPT
 def load_system_prompt():
     base_dir = os.path.dirname(__file__)
-    prompt_path = os.path.join("data", "system_prompt.txt")
+    prompt_path = os.path.join(base_dir, "data", "system_prompt.txt")
     with open(prompt_path, "r", encoding="utf-8") as f:
         return f.read()
 
