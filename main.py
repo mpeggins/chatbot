@@ -1,5 +1,7 @@
 import os
+
 from google.genai import types
+
 from shared import client, get_retriever
 from app_config import CHAT_MODEL
 

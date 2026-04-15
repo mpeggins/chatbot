@@ -6,6 +6,7 @@ EMBEDDING_MODEL = "models/gemini-embedding-001"
 # --- Database Paths ---
 
 import os
+
 base_dir = os.path.dirname(__file__)
 # Database Name for stored vector embeddings.
 DB_NAME = "chatbot_class_faqs"

@@ -1,8 +1,13 @@
-from google import genai
+import os
 import pickle
-from chromadb import Documents, EmbeddingFunction, Embeddings
+
+from dotenv import load_dotenv
+
+from google import genai
 from google.api_core import retry
 from google.genai import types
+
+from chromadb import Documents, EmbeddingFunction
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_classic.retrievers import ParentDocumentRetriever
@@ -10,12 +15,9 @@ from langchain_classic.storage import LocalFileStore, EncoderBackedStore
 from langchain_community.vectorstores import Chroma
 from langchain_core.embeddings import Embeddings
 
-from app_config import base_dir, DB_NAME, CHROMA_FOLDER, PARENT_DATA_FOLDER, EMBEDDING_MODEL
+from app_config import DB_NAME, CHROMA_FOLDER, PARENT_DATA_FOLDER, EMBEDDING_MODEL
 
 # Setup Environment
-import os
-from dotenv import load_dotenv
-
 load_dotenv()
 api_key = os.getenv('GEMINI_API_KEY')
 
