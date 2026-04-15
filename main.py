@@ -1,11 +1,10 @@
-from google.genai import types
-# import chromadb
-from shared import client, DB_NAME, GeminiEmbeddingFunction
-from ingest import chroma_client # Use only for temporary local runs
 import os
+from google.genai import types
+from shared import client, get_retriever
+from app_config import CHAT_MODEL
 
-# Define System Instructions for LLM
-# This is important to modify this to your need.
+
+# SYSTEM PROMPT
 def load_system_prompt():
     base_dir = os.path.dirname(__file__)
     prompt_path = os.path.join("data", "system_prompt.txt")
@@ -14,27 +13,17 @@ def load_system_prompt():
 
 system_instruction = load_system_prompt()
 
-# Create specific configuration for the chat
+# RAG / LLM CONFIG
 rag_config = types.GenerateContentConfig(
     temperature=0.6,          # Controls creativity
     max_output_tokens=1000,    # Hard stop limit
     system_instruction = system_instruction     # Added System Instruction
 )
 
-# Switch to query mode when generating query embeddings.
-embed_fn = GeminiEmbeddingFunction()
-embed_fn.document_mode = False
 
-# Connect to the SAME folder in ingest.py
-# chroma_client = chromadb.PersistentClient(path="./chroma_db")
+# --- Initialize the Librarian --- #
+retriever = get_retriever()
 
-# Access the collection
-# Note: We use .get_collection here instead of .get_or_create
-# This ensures we are talking to the data we just uploaded!
-db = chroma_client.get_collection(
-    name=DB_NAME,
-    embedding_function=embed_fn
-)
 
 # Establish an empty chat history
 chat_history = []
@@ -59,16 +48,20 @@ while True:
 
         # We use a fast call here just to get the search terms
         rewrite_response = client.models.generate_content(
-            model="gemini-2.5-flash-lite",
+            model=CHAT_MODEL,
             contents=rewrite_prompt
         )
         search_query = rewrite_response.text.strip()
 
     # --- 2: Search the Database ---
-    # Use the rewritten query to find relevant data, not the original user text
-    result = db.query(query_texts=[search_query], n_results=1)
-    all_passages = result["documents"][0] # Extract just the text
-    context_text = "\n".join(all_passages)
+    # We ask the Librarian to find the documents. It handles the child-to-parent swap automatically.
+    retrieved_docs = retriever.invoke(search_query)
+
+    # Extract the actual text content from the LangChain Document objects
+    all_passages = [doc.page_content for doc in retrieved_docs]
+
+    # Join them together with a clear separation
+    context_text = "\n\n---\n\n".join(all_passages)
 
     # --- 3: Final Answer Generation ---
     # We send the ORIGINAL query to the bot so it feels natural,
@@ -81,7 +74,7 @@ while True:
 
     # We include chat_history so it remembers the "vibe" and previous facts
     response = client.models.generate_content(
-        model="gemini-2.5-flash-lite",
+        model=CHAT_MODEL,
         config=rag_config,
         contents=chat_history + [{"role": "user", "parts": [{"text": final_prompt}]}]
     )
