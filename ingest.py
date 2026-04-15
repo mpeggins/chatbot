@@ -29,7 +29,7 @@ def get_raw_docs(path):
     """Loads a file but DOES NOT chunk it yet."""
     ext = os.path.splitext(path)[1].lower()
 
-    if path.startswith(('http://', 'https://')):
+    if path.startswith(('http://', 'https://', 'www.')):
         return WebBaseLoader(path).load()
 
     if ext == '.txt':
